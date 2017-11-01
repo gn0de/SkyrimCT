@@ -1,6 +1,6 @@
 [ENABLE]
 
-aobscanmodule(INJECT,TESV.exe,FF 80 C4 05 00 00) // should be unique
+aobscanmodule(INJECT,TESV.exe,FF 80 C4 05 00 00) // Don't edit this unless you want to edit something random as hell
 alloc(newmem,$1000)
 
 label(code)
