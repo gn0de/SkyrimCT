@@ -1,0 +1,27 @@
+[ENABLE]
+
+aobscanmodule(INJECT,TESV.exe,FF 80 C4 05 00 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  add [esi+000005C4],0 //inc [eax+000005C4]
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db FF 80 C4 05 00 00
+
+unregistersymbol(INJECT)
+dealloc(newmem)
